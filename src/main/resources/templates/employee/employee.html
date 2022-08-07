@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+
+<body>
+
+
+	
+	<h1>This is Employee page</h1>
+	<h1 th:text="${#authentication.getPrincipal().getUsername()}">Guest</h1>
+	
+	<div sec:authorize="isAuthenticated()">
+    Welcome <b><span sec:authentication="name">Username</span></b>
+    &nbsp;
+    <i><span sec:authentication="principal.authorities">Roles</span></i>
+</div>
+	
+	<table>
+      <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+      </tr>
+      <tr th:each="employee : ${Employees}">
+        <td th:text="${employee.id}">Onions</td>
+        <td th:text="${employee.firstName}">2.41</td>
+        <td th:text="${employee.secondName}">2.41</td>
+        <td th:text="${employee.lastName}">2.41</td>
+        <td th:text="${employee.email}">2.41</td>
+        <td th:text="${employee.phone}">2.41</td>
+         <td th:text="${employee.employeeNumber}">2.41</td>
+          <td th:text="${employee.nic}">2.41</td>
+          
+           <td th:text="${employee.gender.name}">2.41</td>
+            <td th:text="${employee.designation.name}">2.41</td>
+             <td th:text="${employee.shift.name}">2.41</td>
+              <td th:text="${employee.employeeStatus.name}">2.41</td>
+               <td>|
+               <span th:text="${employee.address.no}"></span>
+               <span th:text="${employee.address.road}"></span>
+                <span th:text="${employee.address.city}"></span>
+               </td>
+              
+       
+        <td>
+        <div sec:authorize="hasAnyAuthority('ADMIN','EDITOR')" >
+        <a type="submit" th:href="@{/employee/update(employeeId=${employee.id})}">Update</a>
+        </div>
+        </td>
+         <td>
+         <div sec:authorize="hasAnyAuthority('ADMIN')">
+         <a type="submit" th:href="@{/employee/delete(employeeId=${employee.id})}">Delete</a>
+         </div>
+         </td>
+      
+      </tr>
+    </table>
+  
+	
+	
+                
+</body>
+
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+
+	
+	<h1>This is order type page</h1>
+		<h1>User:</h1><h1 th:text="${#authentication.getPrincipal().getUsername()}">Guest</h1>
+	<table>
+      <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+      </tr>
+      <tr th:each="order : ${Orders}">
+        <td th:text="${order.id}">Onions</td>
+        <td th:text="${order.orderNo}">2.41</td>
+        <td th:text="${order.noOfItems}">2.41</td>
+        <td th:text="${order.totalPrice}">2.41</td>
+        <td th:text="${order.orderDate}">2.41</td>
+        <td th:text="${order.discount}">2.41</td>
+        <td th:text="${order.serviceCharge}">2.41</td>
+        <td th:text="${order.finalPrice}">2.41</td>
+        <td th:text="${order.serviceCharge}">2.41</td>
+        
+        <td th:text="${order.orderType.name}">2.41</td>
+        <td th:text="${order.customer.firstName}">2.41</td>
+        <td th:text="${order.employee.employeeNumber}">2.41</td>
+        <td th:text="${order.orderStatus.name}">2.41</td>
+        
+        
+        
+        
+        <td><a type="submit" th:href="@{/order/update(orderId=${order.id})}">Update</a></td>
+         <td><a type="submit" th:href="@{/order/delete(orderId=${order.id})}">Delete</a></td>
+      </tr>
+    </table>
+    
+    <div>
+    <li th:each="order, iterStat : ${Orders}" th:if="${iterStat.index >= iterStat.size-1}">
+      <td><a type="submit" th:href="@{/order/create(orderNo=${order.orderNo}+1)}">create</a></td>
+    </li>
+	</div>
+    
+  
+	
+	
+                
+</body>
+
+
+</html>

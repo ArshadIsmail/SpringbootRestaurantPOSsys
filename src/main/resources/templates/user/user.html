@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+	 <head>
+		<!-- Head Segment -->
+		<div th:replace="fragments/header :: header "></div>
+		 <!-- Head Segment -->
+	 </head>
+
+
+  <body class="g-sidenav-show  bg-gray-100">
+
+	<!-- side-nav -->
+ 	<aside data-color="success" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+	   <div th:replace="fragments/sidenavbar :: sidenav "></div>
+	 </aside>
+	  <!-- End side-nav  -->
+  
+  
+  
+  
+  	<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">      
+    <!-- Navbar -->  
+     <div th:replace="fragments/navbar :: navbar "></div>    
+    <!-- End Navbar -->
+    
+
+    <!-- contnent -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+           <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>User Management</h6>         
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center justify-content-center mb-0">
+                  <thead>
+                    <tr>
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Id</th>
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Name</th>
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Roles</th>
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Created Date</th> 
+                	 <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Modified Date</th>                   
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th> 
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Action</th>
+                    </tr>
+                  </thead>
+                  
+                  
+                  
+      
+                  
+                  <tbody>                    
+                    <tr th:each="user : ${Users}">                
+                      <td>
+                        <div class="d-flex align-items-center justify-content-center">
+                          <div class="me-2 text-xs font-weight-bold " th:text="${user.id}">
+                            </div>
+                        </div>
+                      </td>
+                         
+                      <td>
+                       <div class="d-flex align-items-center justify-content-center">
+                           <span class="me-2 text-xs font-weight-bold " th:text="${user.username}">uusername</span>
+                        </div>
+                      </td>
+                      <td>
+                      <div class="d-flex align-items-center justify-content-center">
+                        <span th:each="roles: ${user.roles}"> 
+						   <p class="me-2 text-xs font-weight-bold "  th:text="${roles.name}" >Roles</p>                       	                  	
+                        </span>
+                        </div>                      
+                      </td>
+                      
+                      
+                   <td class="align-middle text-center">          
+                    <span class="text-secondary text-xs font-weight-bold" th:text="${#calendars.format(user.createdDate, 'yyyy-mm-dd HH:mm:ss')}" >24/12/08</span>
+                   </td>
+                   
+                   <td class="align-middle text-center">          
+                    <span class="text-secondary text-xs font-weight-bold" th:text="${#calendars.format(user.lastModifiedDate, 'yyyy-mm-dd HH:mm:ss')}" >24/12/08</span>
+                   </td>
+                   
+                   <td class="align-middle text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                         <span class="badge badge-sm bg-gradient-success "  th:if="${user.userStatus.id == 1}">Active</span>
+                         <span class="badge badge-sm bg-gradient-danger "  th:if="${user.userStatus.id == 2}">Inactive</span>                        
+                        </div>
+                      </td>
+                      
+                      <td class="align-middle text-center">
+                      
+                    <div class="ms-auto text-center"> 
+                    <a class=" btn-link text-dark" th:href="@{/user/edit(userId=${user.id})}" >
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    
+                    <a class=" btn-link text-danger text-gradient px-3" th:href="@{/user/delete(userId=${user.id})}"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
+                   
+                   
+                   
+                    
+                    <!--      <a class=" btn-link text-dark" >
+                    <i class="fas fa-edit" aria-hidden="true">
+                    </i>
+                    </a>
+                    
+                    
+                      <a class=" btn-link text-dark" >
+                    <i class="fas fa-user-edit" aria-hidden="true">
+                    </i>
+                    </a>
+                    
+                     <a class=" btn-link text-dark" >
+                    <i class="fas fa-user-edit-o" aria-hidden="true">
+                    </i>
+                    </a>-->
+                  </div>
+                      </td>
+                    </tr>
+                    <tr>                                      
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!-- End contnent -->
+     
+                
+      <!--  Footer Starts Here -->
+      <footer class="footer pt-3  ">
+    	<div th:replace="fragments/footer :: footer "></div>
+      </footer>
+    </div>
+  </main>
+  
+  
+  
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+   
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+</body>
+
+</html>

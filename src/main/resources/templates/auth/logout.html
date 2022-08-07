@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+
+	
+	<h1>This is logout page</h1>
+	
+	<form action="#" th:action="@{/shift/save}"
+	th:object="${shift}" method="post">
+	<input type="text" hidden="true" th:field="*{id}" placeholder="id" />
+	<input type="text" th:field="*{name}" placeholder="name" />
+	<button type="submit" >Save</button>
+	</form>
+	
+	
+                
+</body>
+</html>

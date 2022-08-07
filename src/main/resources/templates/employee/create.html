@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+	
+	<h1>This is Create Employee page</h1>
+	
+	<form action="#" th:action="@{/employee/save}"
+	th:object="${employee}" method="post">
+	<input type="text" hidden="true" th:field="*{id}" placeholder="id" />
+	<input type="text" th:field="*{firstName}" placeholder="fist name" />
+	<input type="text" th:field="*{secondName}" placeholder="last name" />	
+	<input type="text" th:field="*{lastName}" placeholder="last name" />
+	<input type="text" th:field="*{email}" placeholder="email" />
+	<input type="text" th:field="*{phone}" placeholder="phone" />
+	<input type="text" th:field="*{nic}" placeholder="nic" />
+	<input type="text" th:field="*{employeeNumber}" placeholder="emp no" />
+	
+	
+								
+<select th:field="*{gender}" id="gender" name="gender">
+    <option th:each="i : ${genderlist}" th:value="${i.id}" th:text="${i.name}">
+    </option>
+</select>	
+
+<select th:field="*{designation}" id="designation" name="designation">
+    <option th:each="h : ${designationList}" th:value="${h.id}" th:text="${h.name}">
+    </option>
+</select>
+
+<select th:field="*{shift}" id="shift" name="shift">
+    <option th:each="h : ${shiftList}" th:value="${h.id}" th:text="${h.name}">
+    </option>
+</select>
+
+
+<select th:field="*{employeeStatus}" id="employeeStatus" name="employeeStatus">
+    <option th:each="h : ${employeeStatusList}" th:value="${h.id}" th:text="${h.name}">
+    </option>
+</select>
+
+
+
+<input type="text" th:field="*{address.no}" placeholder="No" />
+<input type="text" th:field="*{address.road}" placeholder="Road" />
+<input type="text" th:field="*{address.city}" placeholder="City" />
+
+
+	<button type="submit" >Save</button>
+	</form>
+	
+
+	
+	
+                
+</body>

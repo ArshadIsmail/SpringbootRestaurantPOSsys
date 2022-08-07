@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+
+	
+	<h1>This is create customer page</h1>
+	
+	<form action="#" th:action="@{/customer/save}"
+	th:object="${customer}" method="post">
+	<input type="text" hidden="true" th:field="*{id}" placeholder="id" />
+	<input type="text" th:field="*{firstName}" placeholder="fist name" />
+	<input type="text" th:field="*{lastName}" placeholder="last name" />
+	<input type="text" th:field="*{address}" placeholder="address" />
+	<input type="text" th:field="*{email}" placeholder="email" />
+	<input type="text" th:field="*{phone}" placeholder="phone" />
+								
+<select th:field="*{gender}" id="gender" name="gender">
+    <option th:each="i : ${genderlist}" th:value="${i.id}" th:text="${i.name}">
+    </option>
+</select>	
+
+<select th:field="*{customerStatus}" id="customerStatus" name="customerStatus">
+    <option th:each="h : ${customerStatusList}" th:value="${h.id}" th:text="${h.name}">
+    </option>
+</select>
+			
+		
+		
+		
+		
+	
+	<button type="submit" >Save</button>
+	</form>
+	
+	
+                
+</body>

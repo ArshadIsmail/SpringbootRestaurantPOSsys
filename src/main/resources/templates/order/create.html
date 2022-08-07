@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+
+	
+	<h1>This is create order page</h1>
+	
+	<form action="#" th:action="@{/order/save}"
+	th:object="${order}" method="post">
+	<input type="text" hidden="true" th:field="*{id}" placeholder="id" />
+	<input type="text" th:field="*{orderNo}" placeholder="order no" />
+	<input type="text" th:field="*{noOfItems}" placeholder="no of items" />
+	<input type="text" th:field="*{totalPrice}" placeholder="Total" />
+	<input type="text" th:field="*{discount}" placeholder="discount" />
+	<input type="text" th:field="*{serviceCharge}" placeholder="Service Charge" />
+	
+	<input type="text" th:field="*{finalPrice}" placeholder="Final Price" />
+	
+								
+<select th:field="*{orderType}" id="orderType" name="orderType">
+    <option th:each="i : ${orderTypeList}" th:value="${i.id}" th:text="${i.name}">
+    </option>
+</select>	
+
+<select th:field="*{customer}" id="customer" name="customer">
+    <option th:each="i : ${customerList}" th:value="${i.id}" th:text="${i.firstName}">
+    </option>
+</select>
+
+<select th:field="*{employee}" id="employee" name="employee">
+    <option th:each="i : ${employeeList}" th:value="${i.id}" th:text="${i.firstName}">
+    </option>
+</select>
+
+
+<select th:field="*{orderStatus}" id="orderStatus" name="orderStatus">
+    <option th:each="h : ${orderStatusList}" th:value="${h.id}" th:text="${h.name}">
+    </option>
+</select>
+			
+		
+		
+		
+		
+	
+	<button type="submit" >Save</button>
+	</form>
+	
+	
+                
+</body>

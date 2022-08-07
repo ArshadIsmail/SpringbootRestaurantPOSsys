@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+
+	
+	<h1>This is Menu Status page</h1>
+	
+	<table>
+      <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+      </tr>
+      <tr th:each="menuStatus : ${MenuStatuses}">
+        <td th:text="${menuStatus.id}">Onions</td>
+        <td th:text="${menuStatus.name}">2.41</td>
+         <td><a type="submit" th:href="@{/menuStatus/update(menuStatusId=${menuStatus.id})}">Update</a></td>
+         <td><a type="submit" th:href="@{/menuStatus/delete(menuStatusId=${menuStatus.id})}">Delete</a></td>
+      </tr>
+    </table>
+  
+	
+	
+                
+</body>
+
+
+</html>

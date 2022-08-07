@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+
+	
+	<h1>This is order type page</h1>
+	
+	<table>
+      <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+      </tr>
+      <tr th:each="employeeStatus : ${EmployeeStatuses}">
+        <td th:text="${employeeStatus.id}">Onions</td>
+        <td th:text="${employeeStatus.name}">2.41</td>
+         <td><a type="submit" th:href="@{/employeeStatus/update(employeeStatusId=${employeeStatus.id})}">Update</a></td>
+         <td><a type="submit" th:href="@{/employeeStatus/delete(employeeStatusId=${employeeStatus.id})}">Delete</a></td>
+      </tr>
+    </table>
+  
+	
+	
+                
+</body>
+
+
+</html>

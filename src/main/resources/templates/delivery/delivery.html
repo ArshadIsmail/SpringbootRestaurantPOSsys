@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<body>
+
+
+	
+	<h1>This is Deliveries page</h1>
+	
+	<table>
+      <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+      </tr>
+      <tr th:each="delivery : ${Deliverys}">
+        <td th:text="${delivery.id}">Onions</td>
+        <td th:text="${delivery.employee.employeeNumber}">2.41</td>
+        <td th:text="${delivery.deliveryDate}">2.41</td>
+        <td th:text="${delivery.deliveryStatus.name}">2.41</td>
+        <td th:text="${delivery.order.orderNo}">2.41</td>
+        <td th:text="${delivery.address}">2.41</td>
+      <!--    <td><a type="submit" th:href="@{/delivery/update(deliveryId=${delivery.id})}">Update</a></td>
+         <td><a type="submit" th:href="@{/delivery/delete(deliveryId=${delivery.id})}">Delete</a></td>-->
+      </tr>
+    </table>
+  
+	
+	
+                
+</body>
+
+
+</html>

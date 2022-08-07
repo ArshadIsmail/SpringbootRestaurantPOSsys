@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+	 <head>
+		<!-- Head Segment -->
+		<div th:replace="fragments/header :: header "></div>
+		 <!-- Head Segment -->
+	 </head>
+
+
+  <body class="g-sidenav-show  bg-gray-100">
+
+	<!-- side-nav -->
+ 	<aside data-color="success" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+	   <div th:replace="fragments/sidenavbar :: sidenav "></div>
+	 </aside>
+	  <!-- End side-nav  -->
+  
+  
+  
+  
+  	<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">      
+    <!-- Navbar -->  
+     <div th:replace="fragments/navbar :: navbar "></div>    
+    <!-- End Navbar -->
+    
+
+    <!-- contnent -->
+    
+    
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+      
+           <!--   Edit Content comes here  -->
+ 
+ 
+     <div class="col-xl-11 col-lg-5 col-md-6 ">
+          <div class=" z-index-0">
+            <div class="card-header text-center pt-4">
+              <h5>Edit User</h5>
+            </div>
+        
+            <div class="card-body">
+            
+            <!-- form -->
+            <!-- 
+            <form action="#" th:action="@{/order/save}"
+	th:object="${order}" method="post">
+	<input type="text" hidden="true" th:field="*{id}" placeholder="id" />
+	<input type="text" th:field="*{orderNo}" placeholder="order no" />
+	<input type="text" th:field="*{noOfItems}" placeholder="no of items" />
+	<input type="text" th:field="*{totalPrice}" placeholder="Total" />
+	<input type="text" th:field="*{discount}" placeholder="discount" />
+	<input type="text" th:field="*{serviceCharge}" placeholder="Service Charge" />
+	
+	<input type="text" th:field="*{finalPrice}" placeholder="Final Price" />
+	
+								
+<select th:field="*{orderType}" id="orderType" name="orderType">
+    <option th:each="i : ${orderTypeList}" th:value="${i.id}" th:text="${i.name}">
+    </option>
+</select>	
+</form>> -->
+            
+            <!--  End Form -->
+            
+            
+            
+              <form action='#' th:action="@{/user/update}"
+              	th:object="${user}" method="post">
+              
+		    <input type="text" hidden="true" th:field="*{id}" placeholder="id" />
+		              
+		  <div class="row">
+		    <div class="col-md-2">
+		      <div class="form-group">
+		      <label  for="exampleFormControlInput1">Username</label>
+		      </div>
+		      </div> 
+		    <div class="col-md-6"> 
+		      <div class="form-group">
+		        <input type="text"  th:field="*{username}" placeholder="Username" class="form-control"/>	        
+		      </div>
+		    </div>
+		  </div>
+		  
+		  <div class="row">
+		    <div class="col-md-2">
+		      <div class="form-group">
+		      <label  for="exampleFormControlInput1">New Password</label>
+		      </div>
+		      </div> 
+		    <div class="col-md-6"> 
+		      <div class="form-group">
+		        <input type="text" placeholder="New Password" name="password"  class="form-control"  /> 
+		      </div>
+		    </div>
+		  </div>
+		  
+	
+
+
+
+<!-- 			<p> -->
+<!--     	<label>Roles: -->
+<!--           <input type="checkbox" name="roles" -->
+<!--             th:each="role : ${rolesList}" -->
+<!--             th:text="${role.name}" -->
+<!--             th:value="${role.id}" -->
+<!--             th:field="*{roles}" -->
+<!--         /> </label> -->
+<!-- 			</p> -->
+			
+
+         
+         <div  th:each="role : ${rolesList}">
+         <div class="row">
+		    <div class="col-md-2">
+		      <div class="form-group">
+		      <label th:if="${roleStat.index}==0">Roles</label>
+		      </div>
+		      </div> 
+		    <div class="col-md-2"> 
+		      <div class="form-group">
+		      <div class="form-check">
+			  <input class="form-check-input" name="roles" type="checkbox"  th:value="${role.id}" th:field="*{roles}" id="fcustomCheck1">
+			  <label th:text="${role.name}"  class="custom-control-label" for="customCheck1"></label>
+			</div>
+		      </div>
+		    </div>
+		  </div>
+		  </div>
+		  
+		  
+	 
+		    <div class="row">
+		    <div class="col-md-2">
+		      <div class="form-group">
+		      <label>Status</label>
+		      </div>
+		      </div> 
+		    <div class="col-md-2"> 
+		    <div class="form-group">
+		    
+		  
+		    
+		    <select class="form-control" th:field="*{userStatus}" id="userStatus" name="userStatus">
+		      <option th:each="i : ${theUserStatusList}" th:value="${i.id}" th:text="${i.name}">
+		    </select>
+		  </div>
+		    </div>
+		  </div>     
+		          
+		 <button type="submit" class="btn btn-warning">Update</button>
+		 
+		
+		</form>
+		              
+		              
+		
+		  
+
+            </div>
+          </div>
+        </div>
+          
+  
+  
+  
+  
+           
+           <!-- END  Edit Content comes here  -->
+         
+          </div>
+        </div>
+      </div>
+     </div>
+     <!-- End contnent -->
+     
+                
+      <!--  Footer Starts Here -->
+      <footer class="footer pt-3  ">
+    	<div th:replace="fragments/footer :: footer "></div>
+      </footer>
+  </main>
+  
+  
+  
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+   
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+</body>
+
+</html>
